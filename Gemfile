@@ -11,6 +11,12 @@ gem "sprockets-rails"
 
 gem 'bootstrap-sass', '~> 3.4.1'
 
+gem 'jquery-rails'
+
+gem 'devise'
+
+gem "bootstrap", '~> 5.2.3'
+
 # Use sqlite3 as the database for Active Record
 gem "sqlite3", "~> 1.4"
 
