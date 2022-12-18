@@ -1,16 +1,25 @@
-<div class="navbar navbar-expand-md shadow position fixed">
+<div class="navbar navbar-expand-md shadow fixed-top px-2">
   <div class="container-fluid">
     <div class="navbar-brand align-middle">
-      <a href="#">BEAST HACK</a>
+      <a href="#" class="nav-link text-white fw-bold">BEAST HACK</a>
     </div>
     <div class="collapse navbar-collapse d-inline align-middle" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link">Disabled</a>
+        <% if user_signed_in? %>
+          <%= link_to "Новости", news_path, class: 'nav-link text-white' %>
+          <%= link_to "Задания", tasks_path, class: 'nav-link text-white' %>
+          <%= link_to "Команда", team_path, class: 'nav-link text-white' %>
+          <%= link_to "Личный кабинет", account_path, class: 'nav-link text-white' %>
+          <%= link_to "О нас", root_path('#'), class: 'nav-link text-white' %>
+        <% else %>
+          <%= link_to "О нас", root_path('#'), class: 'nav-link text-white' %>
+          <%= link_to "Партнерам", root_path('#'), class: 'nav-link text-white' %>
+        <% end %>
       </div>
     </div>
   </div>
   <% if user_signed_in? %>
-    <%= button_to "Личный кабинет", new_user_session_path, method: :get,
+    <%= button_to "Выйти", destroy_user_session_path, method: :delete,
                   data: { turbo: false }, class: 'btn btn-outline-light mx-1' %>
   <% else %>
     <%= button_to "Вход", new_user_session_path, method: :get,
@@ -19,3 +28,4 @@
             data: { turbo: false }, class: 'btn btn-outline-light mx-1' %>
   <% end %>
 </div>
+<div style="height: 70px"></div>
