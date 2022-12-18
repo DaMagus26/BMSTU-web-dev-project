@@ -82,7 +82,7 @@ GEM
     builder (3.2.4)
     concurrent-ruby (1.1.10)
     crass (1.0.6)
-    date (3.3.1)
+    date (3.3.2)
     debug (1.7.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
@@ -103,7 +103,7 @@ GEM
     importmap-rails (1.1.5)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
-    io-console (0.5.11)
+    io-console (0.6.0)
     irb (1.6.1)
       reline (>= 0.3.0)
     jbuilder (2.11.5)
@@ -180,7 +180,7 @@ GEM
       railties (>= 5.0)
     rspec-core (3.12.0)
       rspec-support (~> 3.12.0)
-    rspec-expectations (3.12.0)
+    rspec-expectations (3.12.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
     rspec-mocks (3.12.1)
@@ -238,6 +238,7 @@ PLATFORMS
   arm64-darwin-21
 
 DEPENDENCIES
+  autoprefixer-rails
   bootsnap
   bootstrap (~> 5.2.3)
   bootstrap-sass (~> 3.4.1)
@@ -249,6 +250,8 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.4)
   rspec-rails
+  sassc-rails
+  sprockets
   sprockets-rails
   sqlite3 (~> 1.4)
   stimulus-rails
