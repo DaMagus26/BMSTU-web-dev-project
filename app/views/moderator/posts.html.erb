@@ -1,3 +1,39 @@
 <%= render partial: 'layouts/navbar_home' %>
 <% provide(:title, 'Публицкации') %>
+<div class="background-bubble bb-2"></div>
+<div class="background-bubble bb-1"></div>
+<div class="news-container container blurred-background purple-background ms-3 me-auto text-white w-75 p-3">
+  <h1 class="h1 fw-bold text-white text-white index">Новый пост</h1>
+  <div class="container bg-white my-3 p-2 text-purple rounded shadow">
+    <% form_with(url: moderator_posts_path, method: :get) do |f| %>
+      <div class="field text-start my-2">
+        <%= f.label :postHeader, 'Заголовок', class: 'form-label text-purple' %><br />
+        <%= f.text_field :postHeader, autofocus: true, class: 'form-control' %>
+      </div>
+    <% end %>
+  </div>
+  <h1 class="h1 fw-bold text-white text-white index">Все посты</h1>
+  <div class="container bg-white my-3 p-2 text-purple rounded shadow">
+  <% if Post.all.empty? %>
+      <h2 class="h2 my-2">Пока нет постов</h2>
+  <% else %>
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Заголовок</th>
+        <th>Автор</th>
+        <th>Время создания</th>
+      </tr>
+      <% Post.all.each do |p| %>
+        <tr>
+          <td><%= p.id %></td>
+          <td><%= p.header %></td>
+          <td><%= p.author %></td>
+          <td><%= p.created_at %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+  </div>
+</div>
 
