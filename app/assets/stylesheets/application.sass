@@ -8,6 +8,9 @@
 body
   background: #191229
 
+.text-purple
+  color: #191229
+
 .background-bubble
   position: absolute
   filter: blur(100px)
@@ -21,6 +24,10 @@ body
   top: 100px
   left: 10vw
 
+.bb-2
+  top: 300px
+  right: 6vw
+
 .h1-white
   color: white
 
@@ -30,4 +37,19 @@ body
 // ======== NAVBAR
 .navbar
   background: #120d1f
-  height: 70px
+  min-height: 70px
+
+.navbar-light .navbar-toggler-icon
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+
+// ========= AUTHENTICATION
+
+.auth-window
+  background-color: #442c53
+  box-shadow: #888888 0 0 30px 5px
+  .btn-auth-proceed
+    background-color: #8c5cb0
+    color: white
+  .btn-auth-back
+    background-color: #9385af
+    color: white

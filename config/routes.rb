@@ -5,4 +5,9 @@ Rails.application.routes.draw do
   get 'team', to: 'pages#team'
   get 'tasks', to: 'pages#tasks'
   get 'account', to: 'pages#account'
+
+  get 'moderator/users'
+  get 'moderator/teams'
+  get 'moderator/posts'
+  get 'admin/control_panel'
 end
