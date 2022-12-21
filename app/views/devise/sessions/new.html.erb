@@ -5,15 +5,15 @@
   <div class="col-md-5 text-center mx-auto my-5 border rounded p-5 auth-window">
     <h2 class="h1 text-white mb-5">Вход</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
   <div class="field text-start my-2">
     <%= f.label :email, 'Email', class: 'form-label text-white' %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', require: :require %>
   </div>
 
   <div class="field text-start my-2">
     <%= f.label :password, 'Пароль', class: 'form-label text-white' %><br />
-    <%= f.password_field :password, autocomplete: "current-password", class: 'form-control' %>
+    <%= f.password_field :password, autocomplete: "current-password", class: 'form-control', require: :require %>
   </div>
 
   <% if devise_mapping.rememberable? %>
@@ -24,7 +24,7 @@
   <% end %>
 
   <div class="actions my-4 d-flex">
-    <div class="w-50 px-1"><%= button_to 'Назад', :back, class: 'btn btn-auth-back w-100' %></div>
+    <div class="w-50 px-1"><%= link_to 'Назад', :back, class: 'btn btn-auth-back w-100' %></div>
     <div class="w-50 px-1"><%= f.submit "Войти", class: 'btn btn-auth-proceed w-100' %></div>
   </div>
 <% end %>

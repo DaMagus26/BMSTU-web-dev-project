@@ -1,0 +1,19 @@
+<%= render partial: 'layouts/navbar_home' %>
+<% provide(:title, 'Новости') %>
+<div class="background-bubble bb-2"></div>
+<div class="background-bubble bb-1"></div>
+<div class="news-container container blurred-background purple-background ms-3 me-auto text-white w-75 p-3">
+  <h1 class="h1 fw-bold text-white text-white index">Новости хакатона</h1>
+  <% if @posts.empty? %>
+    <div class="container bg-white my-3 p-2 text-purple rounded shadow">
+      <h2 class="h2 my-2">Пока нет новостей</h2>
+    </div>
+  <% end %>
+  <% @posts.sort_by(&:created_at).reverse.each do |p| %>
+    <div class="container bg-white my-3 p-2 text-purple rounded shadow">
+      <h2 class="h2 my-2"><%= p.header %></h2>
+      <p class="post-date"><%= p.created_at %></p>
+      <%== p.content %>
+    </div>
+  <% end %>
+</div>
