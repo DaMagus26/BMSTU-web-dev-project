@@ -16,7 +16,6 @@
             <li class="nav-item"><%= link_to "Команда", team_path, class: 'nav-link text-white' %></li>
           <% end %>
           <li class="nav-item"><%= link_to "Личный кабинет", edit_user_registration_path, class: 'nav-link text-white' %></li>
-          <li class="nav-item"><%= link_to "О нас", root_path('#indexAbout'), class: 'nav-link text-white' %></li>
             <% if ['admin', 'moderator'].include? current_user.role %>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -34,8 +33,8 @@
               </li>
             <% end %>
         <% else %>
-          <li class="nav-item"><%= link_to "О нас", root_path('#'), class: 'nav-link text-white' %></li>
-          <li class="nav-item"><%= link_to "Партнерам", root_path('#'), class: 'nav-link text-white' %></li>
+          <li class="nav-item"><%= link_to "О нас", root_path+'#indexAbout', class: 'nav-link text-white' %></li>
+          <li class="nav-item"><%= link_to "Партнерам", root_path+'#indexPartners', class: 'nav-link text-white' %></li>
         <% end %>
         </ul>
       </div>

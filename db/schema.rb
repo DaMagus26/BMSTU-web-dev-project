@@ -10,11 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_19_142209) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_21_163958) do
   create_table "posts", force: :cascade do |t|
     t.text "header", null: false
     t.text "content", null: false
     t.string "author"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "track"
+    t.decimal "semi_final_score", precision: 3
+    t.decimal "final_score", precision: 3
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -28,8 +37,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_19_142209) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "role", default: 0
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "teams_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["teams_id"], name: "index_users_on_teams_id"
   end
 
+  add_foreign_key "users", "teams", column: "teams_id"
 end
