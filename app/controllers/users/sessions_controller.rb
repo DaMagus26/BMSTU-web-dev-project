@@ -9,7 +9,7 @@ class Users::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  POST /resource/sign_in
+  # POST /resource/sign_in
   def create
     super
   end
@@ -18,6 +18,10 @@ class Users::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
+
+  def edit_user
+
+  end
 
   # protected
 

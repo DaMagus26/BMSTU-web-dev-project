@@ -11,10 +11,12 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <% if user_signed_in? %>
           <li class="nav-item"><%= link_to "Новости", news_path, class: 'nav-link text-white' %></li>
-          <li class="nav-item"><%= link_to "Задания", tasks_path, class: 'nav-link text-white' %></li>
-          <li class="nav-item"><%= link_to "Команда", team_path, class: 'nav-link text-white' %></li>
-          <li class="nav-item"><%= link_to "Личный кабинет", account_path, class: 'nav-link text-white' %></li>
-          <li class="nav-item"><%= link_to "О нас", root_path('#'), class: 'nav-link text-white' %></li>
+          <% unless ['admin', 'moderator'].include? current_user.role %>
+            <li class="nav-item"><%= link_to "Задания", tasks_path, class: 'nav-link text-white' %></li>
+            <li class="nav-item"><%= link_to "Команда", team_path, class: 'nav-link text-white' %></li>
+          <% end %>
+<!--          <li class="nav-item"><%#= link_to "Личный кабинет", account_path, class: 'nav-link text-white' %></li>-->
+          <li class="nav-item"><%= link_to "О нас", root_path('#indexAbout'), class: 'nav-link text-white' %></li>
             <% logger.debug("Current role: #{current_user.role} | #{current_user.role in ['admin', 'moderator']}") %>
             <% if ['admin', 'moderator'].include? current_user.role %>
               <li class="nav-item dropdown">

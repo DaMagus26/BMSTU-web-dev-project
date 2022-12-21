@@ -12,6 +12,11 @@ class ModeratorController < ApplicationController
   def teams
   end
 
-  def posts
+  def posts_create
+    post_params = params.require(:post).permit(:postHeader, :postContent)
+    Post.create!(header: post_params[:postHeader], content: post_params[:postContent], author: current_user.id)
+  end
+
+  def posts_delete
   end
 end
