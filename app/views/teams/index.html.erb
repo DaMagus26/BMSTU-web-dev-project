@@ -1,2 +1,55 @@
-<h1>Teams#index</h1>
-<p>Find me in app/views/teams/index.html.erb</p>
+<%= render partial: 'layouts/navbar_home' %>
+<% provide(:title, 'Команды') %>
+<div class="background-bubble bb-2"></div>
+<div class="background-bubble bb-1"></div>
+<div class="news-container container blurred-background purple-background mx-auto text-white w-100 p-3">
+  <h1 class="h1 fw-bold text-white text-white index">Команды</h1>
+  <div class="row row-cols-1 row-cols-md-3 g-4 text-dark">
+    <% @teams.each do |t| %>
+      <% logger.debug(t) %>
+      <div class="col">
+        <div class="card">
+          <div class="card-header">
+            <%= "#{t[:data].name} (id: #{t[:data].id})"%>
+          </div>
+          <table class="table">
+            <tr>
+              <td class="text-decoration-underline"><%= t[:leader].id unless t[:leader].nil? %></td>
+              <td class="text-decoration-underline"><%= t[:leader].first_name.to_s + ' ' + t[:leader].last_name.to_s unless t[:leader].nil? %></td>
+              <td class="text-decoration-underline"><%= t[:leader].email unless t[:leader].nil? %></td>
+            </tr>
+            <% t[:members].each do |m| %>
+              <tr>
+                <td><%= m.id %></td>
+                <td><%= m.first_name.to_s + ' ' + m.last_name.to_s %></td>
+                <td><%= m.email %></td>
+              </tr>
+            <% end %>
+          </table>
+          <div class="card-footer">
+            <%= t[:data].track %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <h1 class="h1 fw-bold text-white text-white mt-5 index">Участники без команд</h1>
+  <div class="container bg-white rounded">
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>Имя участника</th>
+      <th>Почта</th>
+      <th>Роль</th>
+    </tr>
+    <% @users_with_no_team.each do |m| %>
+      <tr>
+        <td><%= m.id %></td>
+        <td><%= m.first_name.to_s + ' ' + m.last_name.to_s %></td>
+        <td><%= m.email %></td>
+        <td><%= m.role %></td>
+      </tr>
+    <% end %>
+  </table>
+  </div>
+</div>

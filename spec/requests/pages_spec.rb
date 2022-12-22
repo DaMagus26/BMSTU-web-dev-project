@@ -9,8 +9,8 @@ RSpec.describe "Pages", type: :request do
   end
 
   describe "GET /team" do
-    it "returns http success" do
-      get team_path
+    it "returns http redirect" do
+      get teams_path
       expect(response).to have_http_status(302)
     end
   end

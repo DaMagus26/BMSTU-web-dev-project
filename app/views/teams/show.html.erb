@@ -5,7 +5,8 @@
 <div class="background-bubble bb-2"></div>
 <div class="container text-center mx-4">
   <div class="col-md-6 text-center mx-auto my-5 border rounded p-5 auth-window">
-    <h2 class="h3 text-white mb-5"><%= @team.name %></h2>
+    <h2 class="h2 text-white"><%= @team.name %></h2>
+    <div class="text-white mb-5">(ID для участников: <%= @team.id %>)</div>
     <div class="container bg-white rounded">
       <% if current_user.id == @leader.id %>
         <table class="table">
@@ -43,6 +44,13 @@
           </tr>
         <% end %>
       </table>
+      <% end %>
+    </div>
+    <div class="actions text-center my-2 d-flex">
+      <% if current_user.id == @leader.id %>
+        <div class="w-100 px-1"><%= button_to 'Удалить команду', teams_path + '/' +@team.id.to_s, method: :delete, data: { turbo: false, confirm: "Вы уверены?" }, class: 'btn btn-danger' %></div>
+      <% else %>
+        <div class="w-100 px-1"><%= button_to 'Покинуть команду', teams_kick_path(current_user.id), method: :delete, class: 'btn btn-danger' %></div>
       <% end %>
     </div>
   </div>

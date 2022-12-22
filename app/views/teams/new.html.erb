@@ -8,7 +8,7 @@
     <%= form_for(:teams, url: teams_add_to_team_path, data: { turbo: false }) do |f| %>
       <div class="field text-start my-2">
         <%= f.label :id, 'ID команды', class: 'form-label text-white' %><br />
-        <%= f.text_field :id, class: 'form-control', require: :require %>
+        <%= f.text_field :id, class: 'form-control', required: :required %>
         <p class="form-text text-white">Узнай его у капитана команды</p>
         <div class="actions text-center my-2 d-flex">
           <div class="w-100 px-1"><%= f.submit "Присоединиться", class: 'btn btn-auth-proceed' %></div>
@@ -22,12 +22,12 @@
 
       <div class="field text-start my-2">
         <%= f.label :name, 'Название', class: 'form-label text-white' %><br />
-        <%= f.text_field :name, class: 'form-control', require: :require %>
+        <%= f.text_field :name, class: 'form-control', required: :required %>
       </div>
 
       <div class="field text-start my-2">
         <%= f.label :track, 'Направление', class: 'form-label text-white' %><br />
-        <%= f.select :track, options_for_select([['Web-разработка', 1], ['Data Science', 2], ['Java-backend', 3]]), { include_blank: true }, require: :require %>
+        <%= f.select :track, options_for_select([['Web-разработка', 0], ['Data Science', 1], ['Java-backend', 2]]), { include_blank: true }, class: 'form-select', required: :required %>
       </div>
 
       <div class="actions text-center my-2 d-flex">
