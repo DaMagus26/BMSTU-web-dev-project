@@ -9,9 +9,10 @@
       <% logger.debug(t) %>
       <div class="col">
         <div class="card">
-          <div class="card-header">
+          <div class="card-header fw-bold">
             <%= "#{t[:data].name} (id: #{t[:data].id})"%>
           </div>
+          <div class="card-body">
           <table class="table">
             <tr>
               <td class="text-decoration-underline"><%= t[:leader].id unless t[:leader].nil? %></td>
@@ -26,6 +27,7 @@
               </tr>
             <% end %>
           </table>
+          </div>
           <div class="card-footer">
             <%= t[:data].track %>
           </div>

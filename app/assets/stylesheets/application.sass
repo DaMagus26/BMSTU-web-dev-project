@@ -12,12 +12,13 @@ body
   color: #191229
 
 .background-bubble
-  position: absolute
+  position: fixed
   filter: blur(100px)
   width: 520px
   height: 420px
   border-radius: 100%
-  background-color: #281a30
+  background-color: #362444
+  // #281a30
   z-index: -1
 
 .bb-1
@@ -37,7 +38,7 @@ body
   min-height: 70px
 
 .navbar-light .navbar-toggler-icon
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")
 
 // ========= AUTHENTICATION
 
@@ -54,3 +55,16 @@ body
 .btn-auth-back
   background-color: #9385af
   color: white
+
+.index-text
+  font-size: 1.5rem
+
+#indexPartners
+  .card
+    top: 60px
+    left: 0
+    right: 0
+    opacity: 0
+
+  .card[data-active]
+    opacity: 1

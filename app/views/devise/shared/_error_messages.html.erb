@@ -7,8 +7,8 @@
        %>
     </p>
     <ul>
-      <% resource.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <% resource.errors.messages.each do |message| %>
+        <li><%= message[1][0] %></li>
       <% end %>
     </ul>
   </div>
