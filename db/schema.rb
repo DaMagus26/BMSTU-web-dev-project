@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_21_163958) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_21_232438) do
   create_table "posts", force: :cascade do |t|
     t.text "header", null: false
     t.text "content", null: false
@@ -26,6 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_21_163958) do
     t.decimal "final_score", precision: 3
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "leader"
   end
 
   create_table "users", force: :cascade do |t|

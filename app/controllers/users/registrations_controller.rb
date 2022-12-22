@@ -11,19 +11,25 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  def create
+  # def create
+  #   super
+  # end
+
+  # GET /resource/edit
+  def edit
     super
   end
 
-  # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def join_team
+
+  end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    super
+    user_params = params.require(:user).permit(:first_name, :last_name)
+    current_user.update!(user_params)
+  end
 
   # DELETE /resource
   # def destroy

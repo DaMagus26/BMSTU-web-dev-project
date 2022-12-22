@@ -1,0 +1,28 @@
+<% provide(:title, 'Команда ' + @team.name) %>
+<%= render partial: 'layouts/navbar_home' %>
+
+<div class="background-bubble bb-1"></div>
+<div class="background-bubble bb-2"></div>
+<div class="container text-center mx-4">
+  <div class="col-md-6 text-center mx-auto my-5 border rounded p-5 auth-window">
+    <h2 class="h3 text-white mb-5"><%= @team.name %></h2>
+    <div class="container bg-white rounded">
+      <table class="table">
+        <tr>
+          <th>Имя участника</th>
+          <th>Почта</th>
+        </tr>
+        <tr>
+          <td class="text-decoration-underline"><%= @leader.first_name.to_s + ' ' + @leader.last_name.to_s %></td>
+          <td class="text-decoration-underline"><%= @leader.email %></td>
+        </tr>
+        <% @members.each do |m| %>
+          <tr>
+            <td><%= m.first_name.to_s + ' ' + m.last_name.to_s %></td>
+            <td><%= m.email %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
