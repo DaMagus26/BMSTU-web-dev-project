@@ -9,6 +9,24 @@ class TeamsController < ApplicationController
   def index
   end
 
+  def add_to_team
+    user_params = params.require(:teams).permit(:id)
+    members = User.where(teams_id: user_params[:id])
+    if members.length >= 4 or not Team.exists?(user_params[:id].to_i)
+      logger.debug("i'm here")
+      redirect_to new_team_path
+    else
+      logger.debug(Team.exists?(user_params[:id].to_i))
+      current_user.update!(teams_id: user_params[:id])
+    end
+  end
+
+  def kick
+    user_id = params[:id].to_i
+    User.find(user_id).update(teams_id: nil)
+    redirect_back(fallback_location: team_path(current_user.id))
+  end
+
   def destroy
   end
 

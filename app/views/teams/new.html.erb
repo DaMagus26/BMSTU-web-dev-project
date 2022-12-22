@@ -5,10 +5,10 @@
 <div class="container text-center mx-4">
   <div class="col-md-6 text-center mx-auto my-5 border rounded p-5 auth-window">
     <h2 class="h3 text-white mb-5">Присоединиться к команде</h2>
-    <%= form_for(:team, url: teams_path, data: { turbo: false }) do |f| %>
+    <%= form_for(:teams, url: teams_add_to_team_path, data: { turbo: false }) do |f| %>
       <div class="field text-start my-2">
-        <%= f.label :first_name, 'ID команды', class: 'form-label text-white' %><br />
-        <%= f.text_field :first_name, class: 'form-control', require: :require %>
+        <%= f.label :id, 'ID команды', class: 'form-label text-white' %><br />
+        <%= f.text_field :id, class: 'form-control', require: :require %>
         <p class="form-text text-white">Узнай его у капитана команды</p>
         <div class="actions text-center my-2 d-flex">
           <div class="w-100 px-1"><%= f.submit "Присоединиться", class: 'btn btn-auth-proceed' %></div>

@@ -20,10 +20,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
 
-  def join_team
-
-  end
-
   # PUT /resource
   def update
     super
