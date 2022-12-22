@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users
-  resources :posts
   root 'home_page#index'
+  devise_for :users, controllers: { registrations: 'users/registrations' }
+  resources :teams
+  post 'teams/add_to_team'
+  delete 'teams/kick/:id', to: 'teams#kick', as: :teams_kick
+  resources :posts
   get 'news', to: 'pages#news'
   get 'team', to: 'pages#team'
   get 'tasks', to: 'pages#tasks'

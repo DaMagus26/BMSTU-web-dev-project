@@ -10,12 +10,12 @@
 
       <div class="field text-start my-2">
         <%= f.label :first_name, 'Имя', class: 'form-label text-white' %><br />
-        <%= f.text_field :first_name, class: 'form-control', require: :require %>
+        <%= f.text_field :first_name, value: current_user.first_name.to_s, class: 'form-control', require: :require %>
       </div>
 
       <div class="field text-start my-2">
         <%= f.label :last_name, 'Фамилия', class: 'form-label text-white' %><br />
-        <%= f.text_field :last_name, class: 'form-control', require: :require %>
+        <%= f.text_field :last_name, value: current_user.last_name.to_s, class: 'form-control', require: :require %>
       </div>
 
   <div class="field text-start my-2">

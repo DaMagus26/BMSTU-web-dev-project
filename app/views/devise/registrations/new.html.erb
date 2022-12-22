@@ -4,8 +4,6 @@
 <div class="container text-center mx-4">
   <div class="col-md-5 text-center mx-auto my-5 border rounded p-5 auth-window">
     <h2 class="h1 text-white mb-5">Регистрация</h2>
-    <% logger.debug(resource) %>
-    <% logger.debug(resource_name) %>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: false }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 

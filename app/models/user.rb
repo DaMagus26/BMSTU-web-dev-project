@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   enum role: [:user, :moderator, :admin]
   after_initialize :set_default_role, if: :new_record?
-  belongs_to :user
+  belongs_to :team, optional: true
 
   # has_many :posts
   def set_default_role
