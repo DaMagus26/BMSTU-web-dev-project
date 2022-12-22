@@ -19,9 +19,9 @@ class Users::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  def edit_user
-
-  end
+  # def edit_user
+  #
+  # end
 
   # protected
 
