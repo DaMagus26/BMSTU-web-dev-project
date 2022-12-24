@@ -1,35 +1,54 @@
 <%= render partial: 'layouts/navbar_home' %>
-<% provide(:title, 'Оценка') %>
+<% provide(:title, 'Оценки') %>
 
 <div class="background-bubble bb-2"></div>
 <div class="background-bubble bb-1"></div>
 <div class="news-container container blurred-background purple-background mx-auto text-white w-100 p-3 h-100">
-  <h1 class="h1">Current user id: <%= current_user.id %></h1>
+  <%= form_with(url: scores_create_path, method: :get, data: { turbo: false }) do |f| %>
   <div class="container d-flex my-2">
     <div class="w-75 me-3 h-100">
       <div class="container p-2">
         <h3 class="h3">Выбор команды</h3>
-        <%= form_for(:teams, url: "#", method: :get) do |f| %>
           <div class="field text-start my-2">
-            <%= f.label :team, 'Название команды', class: 'form-label' %><br/>
-            <%= f.select :name, options_for_select(@select_options), { include_blank: true }, class: 'form-select', required: :required %>
+            <%= f.label :teams_id, 'Название команды', class: 'form-label' %><br/>
+            <%= f.select :teams_id, options_for_select(@select_options), { include_blank: true }, class: 'form-select', required: :required %>
           </div>
 
           <div class="field text-start my-2">
-            <%= f.label :team, 'Этап', class: 'form-label' %><br/>
-            <%= f.select :name, options_for_select([['Отборочный', 1], ['Финальный', 2]]), { include_blank: true }, class: 'form-select', required: :required %>
+            <%= f.label :stage, 'Этап', class: 'form-label' %><br/>
+            <%= f.select :stage, options_for_select([['Отборочный', 1], ['Финальный', 2]]), { include_blank: true }, class: 'form-select', required: :required %>
           </div>
-
-          <div class="field text-start my-2">
-            <%= f.submit 'Найти', class: 'btn btn-light' %>
-          </div>
-        <% end %>
       </div>
     </div>
     <div class="w-100 ms-2">
-      <%= render partial: 'scores/sf_evaluation_form' %>
+      <div class="container bg-white rounded p-2 text-dark h-100">
+        <h3 class="h3">Оценка</h3>
+
+          <%= f.hidden_field :users_id, value: current_user.id %>
+          <div class="field text-start my-2 row">
+            <div class="col-3"><%= f.label :analysis, 'Анализ:', class: 'form-label' %></div>
+            <div class="col-9"><%= f.number_field :analysis, min: 1, max: 5, pattern: '\d*', class: 'form-control', required: :required %></div>
+          </div>
+
+          <div class="field text-start my-2 row">
+            <div class="col-3"><%= f.label :applicability, 'Применимость:', class: 'form-label' %></div>
+            <div class="col-9"><%= f.number_field :applicability, min: 1, max: 5, pattern: '\d*', class: 'form-control', required: :required %></div>
+          </div>
+
+          <div class="field text-start my-2 row">
+            <div class="col-3"><%= f.label :innovativeness, 'Инновационность:', class: 'form-label' %></div>
+            <div class="col-9"><%= f.number_field :innovativeness, min: 1, max: 5, pattern: '\d*', class: 'form-control', required: :required %></div>
+          </div>
+
+          <%= f.hidden_field :presentation, value: 5 %>
+
+          <div class="field text-start my-2">
+            <%= f.submit 'Оценить', class: 'btn btn-auth-proceed' %>
+          </div>
+      </div>
     </div>
   </div>
+  <% end %>
   <hr />
   <h3 class="h2 mt-3">Итоговая таблица</h3>
   <div class="container bg-white rounded my-3">

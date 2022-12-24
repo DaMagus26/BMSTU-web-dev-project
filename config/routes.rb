@@ -2,12 +2,7 @@ Rails.application.routes.draw do
 
   # Scoring system
   get 'scores/index'
-  get 'scores/new_final'
-  get 'scores/new_semi'
-  get 'scores/create_final'
-  get 'scores/create_semi'
-  get 'scores/update_final'
-  get 'scores/update_semi'
+  get 'scores/create', to: 'scores#create'
 
   root 'home_page#index'
   devise_for :users, controllers: { registrations: 'users/registrations' }
