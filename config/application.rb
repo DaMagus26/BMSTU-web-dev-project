@@ -34,5 +34,7 @@ module BeastHack
     # Don't generate system test files.
     config.generators.system_tests = nil
     config.i18n.default_locale = :ru
+    # config.i18n.default_locale = :en
   end
 end
+# FinalScore.create!(analysis: 5, applicability: 5, innovativeness: 5, presentation: 5, users_id: 21, teams_id: 15)

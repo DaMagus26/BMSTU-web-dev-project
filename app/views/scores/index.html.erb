@@ -1,0 +1,53 @@
+<%= render partial: 'layouts/navbar_home' %>
+<% provide(:title, 'Оценка') %>
+
+<div class="background-bubble bb-2"></div>
+<div class="background-bubble bb-1"></div>
+<div class="news-container container blurred-background purple-background mx-auto text-white w-100 p-3 h-100">
+  <h1 class="h1">Current user id: <%= current_user.id %></h1>
+  <div class="container d-flex my-2">
+    <div class="w-75 me-3 h-100">
+      <div class="container p-2">
+        <h3 class="h3">Выбор команды</h3>
+        <%= form_for(:teams, url: "#", method: :get) do |f| %>
+          <div class="field text-start my-2">
+            <%= f.label :team, 'Название команды', class: 'form-label' %><br/>
+            <%= f.select :name, options_for_select(@select_options), { include_blank: true }, class: 'form-select', required: :required %>
+          </div>
+
+          <div class="field text-start my-2">
+            <%= f.label :team, 'Этап', class: 'form-label' %><br/>
+            <%= f.select :name, options_for_select([['Отборочный', 1], ['Финальный', 2]]), { include_blank: true }, class: 'form-select', required: :required %>
+          </div>
+
+          <div class="field text-start my-2">
+            <%= f.submit 'Найти', class: 'btn btn-light' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="w-100 ms-2">
+      <%= render partial: 'scores/sf_evaluation_form' %>
+    </div>
+  </div>
+  <hr />
+  <h3 class="h2 mt-3">Итоговая таблица</h3>
+  <div class="container bg-white rounded my-3">
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Команда</th>
+        <th>Отборотный этап</th>
+        <th>Финальный этап</th>
+      </tr>
+      <% @teams.each do |t| %>
+        <tr>
+          <td><%= t.id %></td>
+          <td><%= t.name %></td>
+          <td><%= calculate_sf_score(t.id) %></td>
+          <td><%= calculate_f_score(t.id) %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

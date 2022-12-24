@@ -1,0 +1,31 @@
+<div class="container bg-white rounded p-2 text-dark h-100">
+  <h3 class="h3">Оценка</h3>
+  <%= form_for(:final_scores, url: scores_create_final_path, method: :get) do |f| %>
+
+    <%= f.hidden_field :teams_id, value: 15 %>
+    <%= f.hidden_field :users_id, value: current_user.id %>
+    <div class="field text-start my-2 row">
+      <div class="col-3"><%= f.label :analysis, 'Анализ:', class: 'form-label' %></div>
+      <div class="col-9"><%= f.number_field :analysis, min: 1, max: 5, pattern: '\d*', class: 'form-control', required: :required %></div>
+    </div>
+
+    <div class="field text-start my-2 row">
+      <div class="col-3"><%= f.label :applicability, 'Применимость:', class: 'form-label' %></div>
+      <div class="col-9"><%= f.number_field :applicability, min: 1, max: 5, pattern: '\d*', class: 'form-control', required: :required %></div>
+    </div>
+
+    <div class="field text-start my-2 row">
+      <div class="col-3"><%= f.label :innovativeness, 'Инновационность:', class: 'form-label' %></div>
+      <div class="col-9"><%= f.number_field :innovativeness, min: 1, max: 5, pattern: '\d*', class: 'form-control', required: :required %></div>
+    </div>
+
+    <div class="field text-start my-2 row">
+      <div class="col-3"><%= f.label :presentation, 'Презентация:', class: 'form-label' %></div>
+      <div class="col-9"><%= f.number_field :presentation, min: 1, max: 5, pattern: '\d*', class: 'form-control', required: :required %></div>
+    </div>
+
+    <div class="field text-start my-2">
+      <%= f.submit 'Оценить', class: 'btn btn-auth-proceed' %>
+    </div>
+  <% end %>
+</div>

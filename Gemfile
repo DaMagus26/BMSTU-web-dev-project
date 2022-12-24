@@ -15,6 +15,8 @@ gem 'autoprefixer-rails'
 gem 'sprockets'
 gem 'sassc-rails'
 
+gem 'selenium-webdriver'
+
 gem 'jquery-rails'
 
 gem 'devise'

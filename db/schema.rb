@@ -10,13 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_21_232438) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_23_221109) do
+  create_table "final_scores", force: :cascade do |t|
+    t.integer "analysis"
+    t.integer "applicability"
+    t.integer "innovativeness"
+    t.integer "presentation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "teams_id", null: false
+    t.integer "users_id", null: false
+    t.index ["teams_id"], name: "index_final_scores_on_teams_id"
+    t.index ["users_id"], name: "index_final_scores_on_users_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.text "header", null: false
     t.text "content", null: false
     t.string "author"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "semi_final_scores", force: :cascade do |t|
+    t.integer "analysis", default: 0
+    t.integer "applicability", default: 0
+    t.integer "innovativeness", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "teams_id", null: false
+    t.integer "users_id", null: false
+    t.index ["teams_id"], name: "index_semi_final_scores_on_teams_id"
+    t.index ["users_id"], name: "index_semi_final_scores_on_users_id"
   end
 
   create_table "teams", force: :cascade do |t|
@@ -46,5 +71,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_21_232438) do
     t.index ["teams_id"], name: "index_users_on_teams_id"
   end
 
+  add_foreign_key "final_scores", "teams", column: "teams_id"
+  add_foreign_key "final_scores", "users", column: "users_id"
+  add_foreign_key "semi_final_scores", "teams", column: "teams_id"
+  add_foreign_key "semi_final_scores", "users", column: "users_id"
   add_foreign_key "users", "teams", column: "teams_id"
 end

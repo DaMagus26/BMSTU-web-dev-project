@@ -24,6 +24,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def update
     super
     user_params = params.require(:user).permit(:first_name, :last_name)
+    user_params[:first_name] = user_params[:first_name].strip
+    user_params[:last_name] = user_params[:last_name].strip
     current_user.update!(user_params)
   end
 
